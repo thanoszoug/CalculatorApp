@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        app:orientation="horizontal"
+        app:rowCount="2"
+        app:columnCount="1">
+        
+        <Button
+                style="@style/calc_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="Calculator"/>
+
+        <Button
+            style="@style/calc_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:text="Currency Converter"/>
+        
+    </android.support.v7.widget.GridLayout>
+</LinearLayout>

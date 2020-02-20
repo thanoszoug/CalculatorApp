@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CalculatorApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="fixer_api_key">0dc1d2c164df66a24be0feef9bbfeba2</string>
+</resources>
