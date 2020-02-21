@@ -12,110 +12,134 @@ using Android.Widget;
 
 namespace CalculatorApp.Activities
 {
-    [Activity(Label = "CalculatorActivity")]
-    public class CalculatorActivity : Activity
-    {
-        private TextView calcText;
-        private string[] numbers = new string[2];
-        private string symbol;
+	[Activity(Label = "CalculatorActivity")]
+	public class CalculatorActivity : Activity
+	{
+		private TextView calcText;
+		private string[] numbers = new string[2];
+		private string symbol;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
+			SetContentView(Resource.Layout.activity_main);
 
-            // Create your application here
+			// Create your application here
 
-            calcText = FindViewById<TextView>(Resource.Id.calculator_text_view);
-        }
+			calcText = FindViewById<TextView>(Resource.Id.calculator_text_view);
+		}
 
-        [Java.Interop.Export("ButtonClick")]
-        public void ButtonClick(View v)
-        {
-            Button button = (Button)v;
+		[Java.Interop.Export("ButtonClick")]
+		public void ButtonClick(View v)
+		{
+			Button button = (Button)v;
 
-            if ("0123456789.".Contains(button.Text))
-                BuildDigits(button.Text);
-            else if ("÷+-x".Contains(button.Text))
-                BuildOperator(button.Text);
-            else if (button.Text.Equals("="))
-                Calculate();
-            else if (button.Text.Equals("DEL"))
-                DeleteLastDigit();
-            else
-                ClearText();
-        }
+			if ("0123456789.".Contains(button.Text))
+				BuildDigits(button.Text);
+			else if ("÷+-*".Contains(button.Text))
+				BuildOperator(button.Text);
+			else if (button.Text.Equals("="))
+				Calculate();
+			else if (button.Text.Equals("DEL"))
+				DeleteLastDigit();
+			else if (button.Text.Equals("+/-"))
+				ChangeSign();
+			else
+				ClearText();
+		}
 
-        private void ClearText()
-        {
-            numbers[0] = numbers[1] = null;
-            symbol = null;
-            UpdateCalculator();
-        }
+		private void ChangeSign()
+		{
+			int index = symbol == null ? 0 : 1;
+			numbers[index] = (double.Parse(numbers[index]) * (-1)).ToString();
+			UpdateCalculator();
+		}
 
-        private void DeleteLastDigit()
-        {
-            int index = symbol == null ? 0 : 1;
-            numbers[index] = numbers[index].Remove(numbers[index].Length -1);
+		private void ClearText()
+		{
+			numbers[0] = numbers[1] = null;
+			symbol = null;
+			UpdateCalculator();
+		}
 
-            UpdateCalculator();
-        }
+		private void DeleteLastDigit()
+		{
+			int index = symbol == null ? 0 : 1;
+			if (!string.IsNullOrEmpty(numbers[index]))
+			{
+				numbers[index] = numbers[index].Remove(numbers[index].Length - 1);
 
-        private void Calculate(string newSymbol = null)
-        {
-            double? result = null;
-            double? first = numbers[0] == null ? null : (double?)double.Parse(numbers[0]);
-            double? second = numbers[1] == null ? null : (double?)double.Parse(numbers[1]);
+				if (numbers[index] == "")
+					numbers[index] = null;
+			}
+			else
+			{
+				if (!string.IsNullOrEmpty(symbol))
+					symbol = null;
+			}
 
-            switch (symbol)
-            {
-                case "÷":
-                    result = second != 0 ? first / second : null;
-                    break;
-                case "x":
-                    result = first * second;
-                    break;
-                case "-":
-                    result = first - second;
-                    break;
-                case "+":
-                    result = first + second;
-                    break;
-            }
+			UpdateCalculator();
+		}
 
-            if (result != null)
-            {
-                numbers[0] = result.ToString();
-                symbol = newSymbol;
-                numbers[1] = null;
-                UpdateCalculator();
-            }
-        }
+		private void Calculate(string newSymbol = null)
+		{
+			double? result = null;
+			double? first = numbers[0] == null ? null : (double?)double.Parse(numbers[0]);
+			double? second = numbers[1] == null ? null : (double?)double.Parse(numbers[1]);
 
-        private void BuildOperator(string digit)
-        {
-            if (numbers[1] != null)
-            {
-                Calculate();
-                return;
-            }
+			switch (symbol)
+			{
+				case "÷":
+					result = second != 0 ? first / second : null;
+					break;
+				case "*":
+					result = first * second;
+					break;
+				case "-":
+					result = first - second;
+					break;
+				case "+":
+					result = first + second;
+					break;
+			}
 
-            symbol = digit;
-            UpdateCalculator();
-        }
+			if (result != null)
+			{
+				numbers[0] = result.ToString();
+				symbol = newSymbol;
+				numbers[1] = null;
+				UpdateCalculator();
+			}
+		}
 
-        private void BuildDigits(string digit)
-        {
-            int index = symbol == null ? 0 : 1;
+		private void BuildOperator(string digit)
+		{
+			if (!string.IsNullOrEmpty(numbers[1]))
+			{
+				Calculate();
+				return;
+			}
 
-            if (digit.Equals(".") && numbers[index].Contains("."))
-                return;
+			if (!string.IsNullOrEmpty(numbers[0]))
+			{
+				symbol = digit;
+				UpdateCalculator();
+			}
+		}
 
-            numbers[index] += digit;
+		private void BuildDigits(string digit)
+		{
+			int index = symbol == null ? 0 : 1;
 
-            UpdateCalculator();
-        }
+			if (digit.Equals(".") && numbers[index].Contains("."))
+				return;
 
-        private void UpdateCalculator() => calcText.Text = $"{numbers[0]} {symbol} {numbers[1]}";
+			numbers[index] += digit;
 
-    }
+			UpdateCalculator();
+		}
+
+		private void UpdateCalculator() => calcText.Text = $"{numbers[0]} {symbol} {numbers[1]}";
+
+	}
 }
