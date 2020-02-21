@@ -12,10 +12,6 @@ namespace CalculatorApp
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private TextView calcText;
-        private string[] numbers = new string[2];
-        private string symbol;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
