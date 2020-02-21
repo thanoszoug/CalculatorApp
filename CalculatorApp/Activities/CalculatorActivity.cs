@@ -48,7 +48,7 @@ namespace CalculatorApp.Activities
             int id = item.ItemId;
             if (id == Resource.Id.currency)
             {
-                Toast.MakeText(this, "Currency Clicked", ToastLength.Short).Show();
+                StartActivity(typeof(CurrencyActivity));
                 return true;
             }
 
