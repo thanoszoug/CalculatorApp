@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -19,6 +19,7 @@ namespace CalculatorApp.Activities
     public class CurrencyActivity : AppCompatActivity
     {
         private readonly string[] currencies = Symbols.ValidSymbols;
+        private ProgressBar loadingSpinner;
         private Spinner convertFrom;
         private Spinner convertTo;
         private ArrayAdapter<string> adapter;
@@ -34,6 +35,7 @@ namespace CalculatorApp.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_currency);
 
+            loadingSpinner = FindViewById<ProgressBar>(Resource.Id.loading_spinner);
             convertFrom = FindViewById<Spinner>(Resource.Id.currency_to);
             convertTo = FindViewById<Spinner>(Resource.Id.currency_from);
             amount = FindViewById<EditText>(Resource.Id.amount);
@@ -60,9 +62,12 @@ namespace CalculatorApp.Activities
         }
 
         [Java.Interop.Export("ConvertClick")]
-        public void ConvertClick(View v)
+        public async void ConvertClick(View v)
         {
-            convertedAmount.Text = fixer.Convert(selectedCurrencies[0], selectedCurrencies[1], double.Parse(amount.Text)).ToString();
+            loadingSpinner.Visibility = ViewStates.Visible;
+            var fixerAmount = await fixer.ConvertAsync(selectedCurrencies[0], selectedCurrencies[1], double.Parse(amount.Text));
+            convertedAmount.Text = fixerAmount.ToString();
+            loadingSpinner.Visibility = ViewStates.Invisible;
         }
     }
 }

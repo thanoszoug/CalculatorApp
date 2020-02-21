@@ -54,5 +54,11 @@
         android:padding="10dp"
         android:textSize="20sp"
         android:text="Converted Amount:"/>
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loading_spinner"
+        android:visibility="invisible"
+        style="@android:style/Widget.Holo.ProgressBar"/>
 
 </LinearLayout>
