@@ -18,7 +18,6 @@ namespace CalculatorApp.Activities
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class CurrencyActivity : AppCompatActivity
     {
-        private readonly string[] currencies = Symbols.ValidSymbols;
         private ProgressBar loadingSpinner;
         private Spinner convertFrom;
         private Spinner convertTo;
@@ -26,9 +25,8 @@ namespace CalculatorApp.Activities
         private EditText amount;
         private TextView convertedAmount;
         private FixerIOHelper fixer;
-
-
-        string[] selectedCurrencies = new string[2];
+        private readonly string[] currencies = Symbols.ValidSymbols;
+        private readonly string[] selectedCurrencies = new string[2];
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -66,7 +64,7 @@ namespace CalculatorApp.Activities
         {
             loadingSpinner.Visibility = ViewStates.Visible;
             var fixerAmount = await fixer.ConvertAsync(selectedCurrencies[0], selectedCurrencies[1], double.Parse(amount.Text));
-            convertedAmount.Text = fixerAmount.ToString();
+            convertedAmount.Text = "Converted Amount: " + Math.Round(fixerAmount, 2).ToString();
             loadingSpinner.Visibility = ViewStates.Invisible;
         }
     }
