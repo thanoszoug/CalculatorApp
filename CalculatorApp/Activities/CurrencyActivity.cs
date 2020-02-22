@@ -49,9 +49,13 @@ namespace CalculatorApp.Activities
             convertTo.ItemSelected += ConvertTo_ItemSelected;
         }
 
-        private void ConvertTo_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        [Java.Interop.Export("ConvertClick")]
+        public async void ConvertClick(View v)
         {
-            selectedCurrencies[1] = e.Parent.GetItemAtPosition(e.Position).ToString();
+            loadingSpinner.Visibility = ViewStates.Visible;
+            var fixerAmount = await fixer.ConvertAsync(selectedCurrencies[0], selectedCurrencies[1], double.Parse(amount.Text));
+            UpdateFixerAmount(Math.Round(fixerAmount, 2));
+            loadingSpinner.Visibility = ViewStates.Invisible;
         }
 
         private void ConvertFrom_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -59,13 +63,11 @@ namespace CalculatorApp.Activities
             selectedCurrencies[0] = e.Parent.GetItemAtPosition(e.Position).ToString();
         }
 
-        [Java.Interop.Export("ConvertClick")]
-        public async void ConvertClick(View v)
+        private void ConvertTo_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            loadingSpinner.Visibility = ViewStates.Visible;
-            var fixerAmount = await fixer.ConvertAsync(selectedCurrencies[0], selectedCurrencies[1], double.Parse(amount.Text));
-            convertedAmount.Text = "Converted Amount: " + Math.Round(fixerAmount, 2).ToString();
-            loadingSpinner.Visibility = ViewStates.Invisible;
+            selectedCurrencies[1] = e.Parent.GetItemAtPosition(e.Position).ToString();
         }
+
+        private void UpdateFixerAmount(double amount) => convertedAmount.Text = "Converted Amount: " + amount.ToString();
     }
 }

@@ -24,16 +24,8 @@ namespace CalculatorApp.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_main);
-
-            // Create your application here
-
+            SetContentView(Resource.Layout.activity_calculator);
             calcText = FindViewById<TextView>(Resource.Id.calculator_text_view);
-        }
-
-        public override void OnBackPressed()
-        {
-            return;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
