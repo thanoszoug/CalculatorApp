@@ -5,7 +5,16 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorApp", "CalculatorApp\CalculatorApp.csproj", "{D4684C17-47AC-4260-BF4E-E54F15884344}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CalculatorAppTests", "CalculatorAppTests\CalculatorAppTests.shproj", "{A8267BCE-6FC8-45AF-9805-444A002B70CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit.Droid.CalculatorApp.Tests", "CaclulatorAppTests\NUnit.Droid.CalculatorApp.Tests.csproj", "{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CalculatorAppTests\CalculatorAppTests.projitems*{945ff8f2-b763-4f22-8ae7-cc8f02c98b00}*SharedItemsImports = 4
+		CalculatorAppTests\CalculatorAppTests.projitems*{a8267bce-6fc8-45af-9805-444a002b70cf}*SharedItemsImports = 13
+		CalculatorAppTests\CalculatorAppTests.projitems*{d4684c17-47ac-4260-bf4e-e54f15884344}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -17,6 +26,12 @@ Global
 		{D4684C17-47AC-4260-BF4E-E54F15884344}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4684C17-47AC-4260-BF4E-E54F15884344}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D4684C17-47AC-4260-BF4E-E54F15884344}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
