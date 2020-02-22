@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace CalculatorApp.Helpers
+﻿namespace CalculatorApp.Helpers
 {
     public class CalculatorHelper
     {
@@ -23,6 +11,10 @@ namespace CalculatorApp.Helpers
             numbers = new string[2];
         }
 
+        /// <summary>
+        /// <param name="text">Button Text</param>
+        /// Main Function for Calculation
+        /// </summary>
         public string Calculation(string text)
         {
             if ("0123456789.".Contains(text))
@@ -41,13 +33,19 @@ namespace CalculatorApp.Helpers
             return calcText;
         }
 
+        /// <summary>
+        /// Changes the sign of the last number in numbers array
+        /// </summary>
         private void ChangeSign()
         {
             int index = symbol == null ? 0 : 1;
-            numbers[index] = (double.Parse(numbers[index]) * (-1)).ToString();
+            numbers[index] = !string.IsNullOrEmpty(numbers[index]) ? (double.Parse(numbers[index]) * (-1)).ToString() : null;
             UpdateCalculator();
         }
 
+        /// <summary>
+        /// Clears the calculator text
+        /// </summary>
         private void ClearText()
         {
             numbers[0] = numbers[1] = null;
@@ -55,6 +53,9 @@ namespace CalculatorApp.Helpers
             UpdateCalculator();
         }
 
+        /// <summary>
+        /// Deletes the last character inserted in the calculator text area
+        /// </summary>
         private void DeleteLastDigit()
         {
             int index = symbol == null ? 0 : 1;
@@ -74,6 +75,10 @@ namespace CalculatorApp.Helpers
             UpdateCalculator();
         }
 
+        /// <summary>
+        /// <param name="newSymbol">Optional Parameter newSymbol.</param>
+        /// Calculates the result. If newSymbol != null inserts newSymbol as current symbol
+        /// </summary>
         private void Calculate(string newSymbol = null)
         {
             double? result = null;
@@ -105,6 +110,10 @@ namespace CalculatorApp.Helpers
             }
         }
 
+        /// <summary>
+        /// <param name="digit">The Operator pressed.</param>
+        /// Inserts the operator pressed in the calculator text area
+        /// </summary>
         private void BuildOperator(string digit)
         {
             if (!string.IsNullOrEmpty(numbers[1]))
@@ -122,6 +131,10 @@ namespace CalculatorApp.Helpers
             UpdateCalculator();
         }
 
+        /// <summary>
+        /// <param name="digit">The Number/Digit pressed.</param>
+        /// Inserts the number pressed in the calculator text area
+        /// </summary>
         private void BuildDigits(string digit)
         {
             int index = symbol == null ? 0 : 1;
@@ -137,6 +150,9 @@ namespace CalculatorApp.Helpers
             UpdateCalculator();
         }
 
+        /// <summary>
+        /// Updates the Calculator Screen
+        /// </summary>
         private void UpdateCalculator() => calcText = $"{numbers[0]} {symbol} {numbers[1]}";
 
     }

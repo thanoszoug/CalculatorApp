@@ -1,10 +1,9 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Runtime;
-using Android.Widget;
+using Android.Support.V7.App;
 using Android.Views;
-using System;
+using Android.Widget;
 using CalculatorApp.Activities;
 
 namespace CalculatorApp
