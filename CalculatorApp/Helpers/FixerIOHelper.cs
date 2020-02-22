@@ -98,7 +98,6 @@ namespace CalculatorApp.Helpers
 
         private FixerRate ParseData(string data, string from, string to)
         {
-            // Parse JSON
             var root = JObject.Parse(data);
 
             var rates = root.Value<JObject>("rates");
@@ -107,7 +106,6 @@ namespace CalculatorApp.Helpers
 
             var rate = toRate / fromRate;
 
-            // Parse returned date
             var returnedDate = DateTime.ParseExact(root.Value<string>("date"), "yyyy-MM-dd",
                 System.Globalization.CultureInfo.InvariantCulture);
 
