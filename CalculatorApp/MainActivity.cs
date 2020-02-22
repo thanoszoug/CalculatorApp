@@ -16,8 +16,7 @@ namespace CalculatorApp
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-
-            StartActivity(typeof(CalculatorActivity));
+            SetContentView(Resource.Layout.activity_main);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -25,6 +24,16 @@ namespace CalculatorApp
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        [Java.Interop.Export("NavigationClick")]
+        public void NavigationClick(View v)
+        {
+            Button button = (Button)v;
+            if ("Calculator".Contains(button.Text))
+                StartActivity(typeof(CalculatorActivity));
+            else
+                StartActivity(typeof(CurrencyActivity));
         }
     }
 }
