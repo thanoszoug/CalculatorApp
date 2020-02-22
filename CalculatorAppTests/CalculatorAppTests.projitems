@@ -9,6 +9,7 @@
     <Import_RootNamespace>CalculatorAppTests</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)CalculatorTests\HelloWorldTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CalculatorTests\CalculatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CalculatorTests\FixerIOTests.cs" />
   </ItemGroup>
 </Project>

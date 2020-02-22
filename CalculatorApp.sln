@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorApp", "Calculator
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CalculatorAppTests", "CalculatorAppTests\CalculatorAppTests.shproj", "{A8267BCE-6FC8-45AF-9805-444A002B70CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit.Droid.CalculatorApp.Tests", "CaclulatorAppTests\NUnit.Droid.CalculatorApp.Tests.csproj", "{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaclulatorAppTests", "CaclulatorAppTests\CaclulatorAppTests.csproj", "{945FF8F2-B763-4F22-8AE7-CC8F02C98B00}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
