@@ -1,14 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 namespace CalculatorApp.Models
 {
@@ -30,6 +20,10 @@ namespace CalculatorApp.Models
 
         public DateTime Date { get; set; }
 
+        /// <summary>
+        /// <param name="amount">The requested amount</param>
+        /// Converts the requested currency amount into the new converted amount
+        /// </summary>
         public double Convert(double amount)
         {
             return amount * Rate;

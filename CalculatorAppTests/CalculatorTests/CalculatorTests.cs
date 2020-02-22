@@ -1,11 +1,5 @@
-﻿using Android.Support.V7.App;
-using Android.Widget;
-using CalculatorApp.Activities;
-using CalculatorApp.Helpers;
+﻿using CalculatorApp.Helpers;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CalculatorAppTests.CalculatorTests
 {
