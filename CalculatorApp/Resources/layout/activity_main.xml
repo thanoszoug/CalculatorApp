@@ -1,180 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <HorizontalScrollView
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <ImageView
+        android:src="@drawable/currencyres"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:id="@+id/calculator_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:textSize="50sp"
-            android:text="0"/>
-    </HorizontalScrollView>
-
-    <android.support.v7.widget.GridLayout
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1" />
+    <Button
+        android:text="Calculator"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        app:orientation="horizontal"
-        app:rowCount="5"
-        app:columnCount="4">
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            app:layout_columnSpan="2"
-            android:text="C"/>
-        
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="DEL"/>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/calculator_button"
+        android:onClick="NavigationClick"/>
+    <Button
+        android:text="Fixer.io Converter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/converter_button"
+        android:onClick="NavigationClick"/>
 
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="÷"/>
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="7"/>
-        
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="8"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="9"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="x"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="4"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="5"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="6"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="-"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="1"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="2"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="3"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="+"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="+/-"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="0"/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="."/>
-
-        <Button
-            style="@style/calc_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"
-            android:text="="/>
-    </android.support.v7.widget.GridLayout>
 </LinearLayout>
